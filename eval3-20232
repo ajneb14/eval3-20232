@@ -1,0 +1,111 @@
+from os import system
+system("cls")
+
+patente= []
+tipo = []
+marca = []
+precio = []
+preciomultas = []
+fechamultas = []
+fecha = []
+dueño = []
+
+def grabar_vehiculo ():
+    while True:
+        try:
+            tip = str(input("ingrese tipo de auto: "))
+            if len(tip) >= 1:
+                tipo.append(tip)
+                print("ingresado correctamente")
+                break
+            else:
+                print("debe tener 1 o mas caracteres")
+        except:
+            print("ocurrio una excepcion")
+    while True:
+        try:
+            pat = (input("ingrese patente de auto (recuerda que solo tienen 6 digitoos): "))
+            if len(pat) == 6:
+                patente.append(pat)
+                print("ingresado correctamente")
+                break
+            else:
+                print("debe tener 6 caracteres")
+        except:
+            print("ocurrio una excepcion")
+    while True:
+        try:
+            mar = str(input("ingrese marca de auto: "))
+            if len(mar) >= 2 and len(mar)<= 15:
+                marca.append(mar)
+                print("ingresado correctamente")
+                break
+            else:
+                print("debe tener 2 o 15 caracteres")
+        except:
+            print("ocurrio una excepcion")
+    while True:
+        try:
+            money= int(input("ingrese precio de auto: "))
+            if money >= 5000000:
+                precio.append(money)
+                print("ingresado correctamente")
+                break
+            else:
+                print("debe valer mas de $5.000.000")
+        except:
+            print("ocurrio una excepcion")
+    while True:
+            date=(input("ingrese fecha de registro (DD/MM/YYYY): "))
+            fecha.append(date)
+            print("fecha ingresada correctamente")
+            break
+    while True:
+            name = str(input("ingrese nombre del dueño: "))
+            dueño.append(name)
+            print("nombre ingresado correctamente")
+            break
+    while True:
+            fecha_multa = int(input("ingrese fecha de multas(en caso de no tener escribir 0): "))
+            fechamultas.append(fecha_multa)
+            print("fecha multas ingresado correctamente")
+            break
+    while True:
+            monto_multa = int(input("ingrese monto de multas(en caso de no haber poner 0): "))
+            preciomultas.append(monto_multa)
+            print("precio multas ingresado correctamente")
+            break
+def buscar():
+    while True:
+        pat=input("ingrese patente a buscar: ")
+        if pat in patente:
+            index = patente.index(pat)
+            print("AUTO ENCONTRADO")
+            print(f"TIPO         : {tipo[index]}")
+            print(f"MARCA        : {marca[index]}")
+            print(f"PRECIO       : {precio[index]}")
+            print(f"FECHA        : {fecha[index]}")
+            print(f"DUEÑO        : {dueño[index]}")
+            print(f"MULTA PRECIO : {preciomultas[index]}")
+            print(f"MULTA FECHA  : {fechamultas[index]}")
+        else:
+            print("patente mal ingresada o no esta disponible")   
+
+while True:
+    print("""
+    ******** AUTO SEGURO ********
+    1.GRABAR VEHICULO
+    2.BUSCAR
+    3.SALIR""")
+    try:
+        opcion=int(input("ingrese opc: "))
+        if opcion == 3:
+            break
+        elif opcion < 1 or opcion > 3:
+                print("intente nuevamente")
+        if opcion == 1:
+            grabar_vehiculo()
+        if opcion == 2:
+            buscar()
+    except:
+         print("ingrese un valor numerico valido")
